@@ -1,16 +1,10 @@
 # news_app_ui
+A clean and elegant news app UI. 
 
-A new Flutter project.
+It only has two screens, one to display all the news and another screen is the where you can actually read the whole news in detail..
 
-## Getting Started
 
-This project is a starting point for a Flutter application.
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+# app_snaps
+![01](https://user-images.githubusercontent.com/63596895/152181792-9300cfa5-67c4-4a28-ad21-e412c66b7ffa.jpg)
+![02](https://user-images.githubusercontent.com/63596895/152181800-f302e68c-d65c-41e7-8774-da0d152c3b19.jpg)
