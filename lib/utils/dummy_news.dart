@@ -1,9 +1,8 @@
-import './models/news.dart';
-
-import 'package:flutter/material.dart';
+import '../models/news.dart';
 
 final List<News> dummyNews = [
   News(
+    id: '20220125-CivilWar',
     imageAddress:
         'https://i.guim.co.uk/img/media/760fc0041624e199fcb139f9a7ef87edbbcb61b4/0_0_5000_3002/master/5000.jpg?width=620&quality=85&auto=format&fit=max&s=e121e5f86f18a1cab8ed791d330f1720',
     title: 'No, America is not on the brink of a civil war',
@@ -17,6 +16,7 @@ For instance, in the wake of the 2016 election, Trump claimed to have had higher
     read: 5,
   ),
   News(
+    id: '20220127-Teachingisload',
     imageAddress:
         'https://media.nature.com/lw800/magazine-assets/d41586-022-00145-z/d41586-022-00145-z_19914654.jpg',
     title: "Stop describing academic teaching as a ‘load’",
@@ -31,6 +31,7 @@ Institutional culture seemed to agree with me. I was given no formal instruction
     read: 8,
   ),
   News(
+    id: '20220129-Outliveyourmoney',
     imageAddress:
         'https://images.mktw.net/im-476270?width=700&size=1.5347721822541966',
     title: "Here are the odds you’ll outlive your money",
@@ -48,6 +49,7 @@ This seems like a minor fix, but actually has a big impact, according to McQuarr
     read: 3,
   ),
   News(
+    id: '20220201-top40missworld',
     imageAddress:
         'https://pbs.twimg.com/media/EC5xORQU8AQWmIY?format=jpg&name=large',
     title: "India's Manasa Varanasi Enters The List Of Top 40 Contestants",
@@ -59,6 +61,7 @@ The finale of Miss World 2021 was postponed due to COVID-19 cases amongst the co
     read: 2,
   ),
   News(
+    id: '20220204-LeonardoDainciMother',
     imageAddress:
         'https://www.biography.com/.image/ar_1:1%2Cc_fill%2Ccs_srgb%2Cg_face%2Cq_auto:good%2Cw_300/MTY2MzU4MjUzMDA4MDcwMzE4/portrait-of-leonardo-da-vinci-1452-1519-getty.jpg',
     title: "Who Was Leonardo Da Vinci's Mother? This Researcher Knows",
@@ -73,6 +76,7 @@ In 1451, when Caterina was 15, she became pregnant by Ser Piero da Vinci, 25, a 
     read: 4,
   ),
   News(
+    id: '2022207-Flutter2.8',
     imageAddress:
         'https://i0.wp.com/9to5google.com/wp-content/uploads/sites/4/2021/12/flutter-2-8.png?w=1500&quality=82&strip=all&ssl=1',
     title:
@@ -95,6 +99,7 @@ Meanwhile, Google is also taking time to highlight their partnership with Flame,
     read: 12,
   ),
   News(
+    id: '20220211-Breakfastaroundglobe',
     imageAddress:
         'https://dynaimage.cdn.cnn.com/cnn/q_auto,w_900,c_fill,g_auto,h_506,ar_16:9/http%3A%2F%2Fcdn.cnn.com%2Fcnnnext%2Fdam%2Fassets%2F190515173104-03-breakfast-around-the-world-avacado-toast.jpg',
     title: "Breakfast around the world: How different places start the day",

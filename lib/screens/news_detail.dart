@@ -1,21 +1,33 @@
 import 'package:flutter/material.dart';
-import 'package:news_app_ui/constants.dart';
+import 'package:news_app_ui/models/news.dart';
+import 'package:news_app_ui/utils/constants.dart';
+import 'package:news_app_ui/utils/dummy_news.dart';
+import 'package:news_app_ui/widgets/border_box.dart';
 
-class NewsDetailScreen extends StatelessWidget {
-  const NewsDetailScreen({
-    Key? key,
-    required this.imageAddress,
-    required this.title,
-    required this.text,
-  }) : super(key: key);
+class NewsDetailScreen extends StatefulWidget {
+  const NewsDetailScreen(
+      {Key? key,
+      required this.id,
+      required this.imageAddress,
+      required this.title,
+      required this.text,
+      required this.bookmarkedNews})
+      : super(key: key);
+  final String id;
   final String imageAddress;
   final String title;
   final String text;
+  final List<News> bookmarkedNews;
+  @override
+  State<NewsDetailScreen> createState() => _NewsDetailScreenState();
+}
 
+class _NewsDetailScreenState extends State<NewsDetailScreen> {
   @override
   Widget build(BuildContext context) {
+    final currentNews = dummyNews.firstWhere((news) => news.id == widget.id);
+    bool isBookmarked = widget.bookmarkedNews.contains(currentNews);
     final mediaQuery = MediaQuery.of(context).size;
-
     return Scaffold(
       body: SafeArea(
         child: SingleChildScrollView(
@@ -27,31 +39,35 @@ class NewsDetailScreen extends StatelessWidget {
                     height: mediaQuery.height * 0.4,
                     width: double.infinity,
                     fit: BoxFit.cover,
-                    image: NetworkImage(imageAddress),
+                    image: NetworkImage(widget.imageAddress),
                   ),
                   Positioned(
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        IconButton(
-                          onPressed: () {
-                            Navigator.pop(context);
-                          },
-                          icon: Icon(
-                            Icons.arrow_back_ios_new,
-                            size: 30.0,
-                            color: Theme.of(context).primaryColor,
-                          ),
+                        BorderBox(
+                          icon: Icons.arrow_back_ios,
+                          label: 'Back',
+                          handleClick: () => Navigator.pop(context),
                         ),
-                        IconButton(
-                          onPressed: () {
-                            // Navigator.pop(context);
+                        BorderBox(
+                          icon: isBookmarked
+                              ? Icons.bookmark
+                              : Icons.bookmark_border,
+                          label: 'Read Later',
+                          handleClick: () {
+                            if (isBookmarked) {
+                              setState(() {
+                                widget.bookmarkedNews.remove(currentNews);
+                                isBookmarked = false;
+                              });
+                            } else {
+                              setState(() {
+                                widget.bookmarkedNews.add(currentNews);
+                                isBookmarked = true;
+                              });
+                            }
                           },
-                          icon: Icon(
-                            Icons.favorite_outline,
-                            size: 30.0,
-                            color: Theme.of(context).primaryColor,
-                          ),
                         ),
                       ],
                     ),
@@ -71,7 +87,7 @@ class NewsDetailScreen extends StatelessWidget {
                           Colors.white,
                         ),
                       ),
-                      child: Text("Read All", style: kTitleText),
+                      child: const Text("Read All", style: kTitleText),
                       onPressed: () {
                         ///
                       },
@@ -87,14 +103,14 @@ class NewsDetailScreen extends StatelessWidget {
                 child: Column(
                   children: [
                     Text(
-                      title,
+                      widget.title,
                       style: kActiveTitleText,
                     ),
                     const SizedBox(
                       height: 20.0,
                     ),
                     Text(
-                      text,
+                      widget.text,
                       style: const TextStyle(
                         fontSize: 17.0,
                         color: Colors.black,

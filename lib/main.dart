@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:news_app_ui/news_detail.dart';
-
-import './homepage.dart';
+import 'package:news_app_ui/screens/homepage.dart';
 
 void main() {
   runApp(
@@ -11,6 +9,8 @@ void main() {
 
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
+
+  // List<News> bookmarkedNews = [];
 
   @override
   Widget build(BuildContext context) {

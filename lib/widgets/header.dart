@@ -5,8 +5,7 @@ class MyHeader extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      // padding: const EdgeInsets.symmetric(horizontal: 20.0),
+    return SizedBox(
       height: 60.0,
       width: double.infinity,
       child: Row(
