@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:news_app_ui/models/news.dart';
 import 'package:news_app_ui/utils/constants.dart';
 import 'package:news_app_ui/utils/dummy_news.dart';
-import 'package:news_app_ui/utils/news_tile.dart';
+import 'package:news_app_ui/widgets/news_tile.dart';
 import 'package:news_app_ui/widgets/clickable_text.dart';
 import 'package:news_app_ui/widgets/header.dart';
 import 'package:intl/intl.dart';
@@ -19,6 +19,8 @@ class _HomePageState extends State<HomePage> {
   bool isBookmarkSelected = false;
   bool isFeaturedSelected = true;
   List<News> bookmarkedNews = [];
+  final List<News> trendingNews =
+      dummyNews.where((news) => news.isTrending == true).toList();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -131,8 +133,22 @@ class _HomePageState extends State<HomePage> {
                     itemCount: bookmarkedNews.length,
                   ),
                 if (isTrendingSelected)
-                  Center(
-                    child: Text("Coming Soon", style: kTitleText),
+                  ListView.builder(
+                    shrinkWrap: true,
+                    physics: const NeverScrollableScrollPhysics(),
+                    itemBuilder: (context, index) {
+                      var currentNews = trendingNews[index];
+                      return NewsTile(
+                        id: currentNews.id,
+                        imageAddress: currentNews.imageAddress,
+                        title: currentNews.title,
+                        text: currentNews.text,
+                        date: DateFormat.MMMd().format(currentNews.date),
+                        read: currentNews.read,
+                        bookmarkedNews: bookmarkedNews,
+                      );
+                    },
+                    itemCount: trendingNews.length,
                   ),
               ],
             ),

@@ -5,6 +5,7 @@ class News {
   final String text;
   final DateTime date;
   final int read;
+  final bool isTrending;
 
   News({
     required this.id,
@@ -13,5 +14,6 @@ class News {
     required this.text,
     required this.date,
     required this.read,
+    this.isTrending = false,
   });
 }
